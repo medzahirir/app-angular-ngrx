@@ -1,0 +1,36 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "computer",
+      "price": 4000,
+      "quantity": 12,
+      "selected": true,
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "Iphone",
+      "price": 234234,
+      "quantity": 120,
+      "selected": false,
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "Pc Portable",
+      "price": 12000,
+      "quantity": 10,
+      "selected": false,
+      "available": false
+    },
+    {
+      "id": 6,
+      "name": "Pc Portable",
+      "price": 12,
+      "quantity": 112,
+      "selected": false,
+      "available": true
+    }
+  ]
+}
