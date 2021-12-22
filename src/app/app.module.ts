@@ -14,6 +14,11 @@ import { ProductNavBarComponent } from './components/products/product-nav-bar/pr
 import { ProductsListComponent } from './components/products/products-list/products-list.component';
 import { ProductItemComponent } from './components/products/products-list/product-item/product-item.component';
 import { StatsComponent } from './components/stats/stats.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { productsReducer } from './ngrx/products.reducer';
+import { ProductsEffects } from './ngrx/products.effects';
 
  
 
@@ -34,7 +39,10 @@ import { StatsComponent } from './components/stats/stats.component';
     AppRoutingModule,
     HttpClientModule, 
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({catalogState:productsReducer}),
+    EffectsModule.forRoot([ProductsEffects]),
+    StoreDevtoolsModule.instrument(),
   ],
   providers: [],
   bootstrap: [AppComponent]

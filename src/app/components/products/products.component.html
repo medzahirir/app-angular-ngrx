@@ -1,7 +1,62 @@
 <app-product-nav-bar></app-product-nav-bar>
 <!-- <app-product-nav-bar (productEventEmitter)="onActionEvent($event)" ></app-product-nav-bar> -->
-<app-products-list [productsInput$]="products$"></app-products-list>
+ 
 <!-- <app-products-list [productsInput$]="products$" (productListEmitterEvent)="onActionEvent($event)"></app-products-list> -->
 
+<div class="container"> 
+    <ng-container *ngIf="productsInput$ | async as result" [ngSwitch]="result.dataState"> 
+        
+        <ng-container *ngSwitchCase="ProductStateEnum.INITAIL">
+            <p>  Initail State  ..</p>
+          </ng-container>
+
+        <ng-container *ngSwitchCase="ProductStateEnum.LOADING">
+           <p>  loading ..</p>
+        </ng-container>
+    
+        <ng-container *ngSwitchCase="ProductStateEnum.ERROR"> 
+            <div class="alert alert-danger"> 
+                {{result.errorMessage}}
+            </div> 
+        </ng-container>
+    
+        <ng-container  *ngSwitchCase="ProductStateEnum.LOADED">
+            <table class="table text-black">
+                <tr>
+                    <th>ID</th> <th>name</th> <th>price</th> <th>quantity</th> <th>selected</th> <th>available</th> <th>selecte Action </th><th>edit</th> <th>delete</th>      
+                </tr>
+                <tr *ngFor="let product of result.products">
+                    <td>{{product.id}}</td>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.quantity}}</td> 
+                    <td>{{product.selected}}</td> 
+                    <td>{{product.available}}</td>
+                    <td>
+                        <button (click)="onselect(product)" [ngClass]="product.selected?'btn-success':'btn-danger'" class="btn">
+                            <i *ngIf="product.selected" class="text-black">selected</i>
+                            <i *ngIf="!product.selected" class="text-black">unselected</i>
+                
+                        </button>
+                    </td> 
+                
+                    <td>
+                       <button  class="btn" (click)="onedit(product)">
+                           <i class="fa fa-edit" ></i> 
+                       </button>
+                   </td>
+                
+                
+                    <td>
+                       <button (click)="ondelete(product)" class="btn">
+                           <i class="fa fa-trash-o" aria-hidden="true"></i> 
+                       </button>
+                   </td> 
+                </tr> 
+           
+            </table>
+        </ng-container> 
+    </ng-container>
+    </div>
 
  

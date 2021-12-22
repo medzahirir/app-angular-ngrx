@@ -13,7 +13,7 @@
       "name": "Iphone",
       "price": 234234,
       "quantity": 120,
-      "selected": false,
+      "selected": true,
       "available": true
     },
     {

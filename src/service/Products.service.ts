@@ -14,12 +14,21 @@ export class ProductService{
     
     constructor(private http:HttpClient)  {} 
 
+
+
+    getProducts():Observable<Product[]>{
+      let  host=Math.random()>0.2 ?environment.host:environment.unreacheblehost;
+
+        return  this.http.get<Product[]>(host+"/products"); 
+    }
+
     getAllProducts():Observable<Product[]>{
       let  host=environment.host;
       //=Math.random()>0.8 ?environment.host:environment.unreacheblehost;
 
         return  this.http.get<Product[]>(host+"/products"); 
     }
+
 
     getSelectedProducts():Observable<Product[]>{
         let  host=environment.host;
@@ -53,7 +62,7 @@ export class ProductService{
     } 
 
 
-    getProducts(productId:number):Observable<Product>{
+    getProduct(productId:number):Observable<Product>{
       let  host=environment.host; 
       return  this.http.get<Product>(host+"/products/"+productId);  
     }

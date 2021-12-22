@@ -28,7 +28,7 @@ export class ProductEditComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productsService.getProducts(this.productid).subscribe(  
+    this.productsService.getProduct(this.productid).subscribe(  
        
       product=>{
         this.productFormGroup=this.formBuilder.group(
